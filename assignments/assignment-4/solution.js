@@ -1,10 +1,13 @@
 class Person {
+    static instanceCount = 0;
+
     constructor(name) {
         this.name = name;
+        Person.instanceCount++;
     }
 
     introduceYourself() {
-        console.log(`Hello, my name is ${this.name}.`);
+        console.log(`Hello, my name is ${this.name}`);
     }
 
     getRole() {
@@ -12,7 +15,35 @@ class Person {
     }
 
     static countInstances() {
-        return this.instanceCount;
+        return Person.instanceCount;
+    }
+}
+
+class GradeBook {
+    constructor() {
+        this.grades = {};
+    }
+
+    addGrade(subject, grade) {
+        if (!this.grades[subject]) {
+            this.grades[subject] = [];
+        }
+        this.grades[subject].push(grade);
+    }
+
+    getGrades(subject) {
+        return this.grades[subject] || [];
+    }
+
+    getAllGrades() {
+        return this.grades;
+    }
+
+    static format() {
+        return {
+            subject: "",
+            grade: 0
+        };
     }
 }
 
@@ -26,7 +57,7 @@ class Student extends Person {
     }
 
     introduceYourself() {
-        console.log(`Hello, my name is ${this.name} and I am a student.`);
+        console.log(`Hello, my name is ${this.name} and I am a student`);
     }
 
     getGradeBook() {
@@ -52,17 +83,16 @@ class Student extends Person {
 
 class Teacher extends Person {
     static instanceCount = 0;
-    subject;
 
     constructor(name, subject) {
         super(name);
         this.subject = subject;
-        Teacher.incrementInstanceCount();
+        Teacher.instanceCount++;
     }
 
     introduceYourself() {
         console.log(
-            `Hello, my name is ${this.name} and I teach ${this.subject}.`
+            `Hello, my name is ${this.name} and I teach ${this.subject}`
         );
     }
 
@@ -86,67 +116,76 @@ class Teacher extends Person {
         return "Teacher";
     }
 
-    static incrementInstanceCount() {
-        Teacher.instanceCount++;
-    }
-
     static countInstances() {
         return Teacher.instanceCount;
     }
 }
 
-class GradeBook {
-    constructor() {
-        this.grades = {};
-    }
-    addGrade(subject, grade) {
-        if (!this.grades[subject]) {
-            this.grades[subject] = [];
-        }
-        this.grades[subject].push(grade);
-    }
-    getGrades(subject) {
-        if (this.grades[subject]) {
-            return this.grades[subject];
-        } else {
-            return [];
-        }
-    }
-    getAllGrades() {
-        return this.grades;
-    }
-    static format() {
-        return this.grades;
-    }
-}
 class School {
     constructor(name) {
         this.name = name;
+        this.students = [];
+        this.teachers = [];
+    }
+
+    enroll(student) {
+        if (student instanceof Student) {
+            this.students.push(student);
+        }
+    }
+
+    expel(student) {
+        if (student instanceof Student) {
+            this.students.splice(this.students.indexOf(student), 1);
+        }
+    }
+
+    hire(teacher) {
+        if (teacher instanceof Teacher) {
+            this.teachers.push(teacher);
+        }
+    }
+
+    fire(teacher) {
+        if (teacher instanceof Teacher) {
+            this.teachers.splice(this.teachers.indexOf(teacher), 1);
+        }
     }
 }
 
-// const school = new School("Example School");
+const john = new Student("John");
+const sarah = new Student("Sarah");
+const mathTeacher = new Teacher("Mr. Smith", "Math");
+const englishTeacher = new Teacher("Mrs. Colin", "English");
+const gradeBook1 = new GradeBook();
+const school1 = new School("IT School");
 
-const student1 = new Student("Alice");
-const student2 = new Student("Bob");
+school1.enroll(john);
+school1.enroll(sarah);
+school1.hire(mathTeacher);
+school1.hire(englishTeacher);
+console.log(school1);
 
-console.log(student1);
-// const teacher1 = new Teacher("Mr. Smith", "Math");
-// const teacher2 = new Teacher("Mrs. Johnson", "English");
+gradeBook1.addGrade("Math", 80);
+gradeBook1.addGrade("English", 90);
 
-// teacher2.teach(student2, 92);
+console.log(gradeBook1.getGrades("Math"));
+console.log(gradeBook1.getGrades("English"));
+console.log(gradeBook1.getAllGrades());
 
-// console.log(student1.getGrade("Math")); // Output: [90, 78]
-// console.log(student2.getGrade("Math")); // Output: [85, 92]
+john.introduceYourself(); // Hello, my name is John and I am a student
+sarah.introduceYourself(); // Hello, my name is Sarah and I am a student
+mathTeacher.introduceYourself(); // Hello, my name is Mr. Smith and I teach Math
+englishTeacher.introduceYourself(); // Hello, my name is Mrs. Colin and I teach English
 
-// console.log(teacher1.getStudentGrade(student1)); // Output: [90, 85]
-// console.log(teacher2.getStudentGrade(student1)); // Output: [78, 92]
+mathTeacher.teach(john, 90);
+englishTeacher.teach(sarah, 86);
+console.log(mathTeacher.getSubject()); // "Math"
+console.log(englishTeacher.getSubject()); // "English"
+console.log(mathTeacher.getStudentGrade(john)); // [90]
+console.log(englishTeacher.getStudentGrade(sarah)); // [86]
 
-// console.log(student1.schoolUniform()); // Output: "School shirt and pants"
-// console.log(teacher1.dressCode()); // Output: "Formal shirt and pants"
-
-// console.log(Student.countInstances()); // Output: 2
-// console.log(Teacher.countInstances()); // Output: 2
-
-// // const person1 = new Person("Alice");
-// // const person2 = new Person("Bob"); d
+console.log(john.getGrade("Math")); // [90]
+console.log(sarah.getGrade("English")); // [86]
+console.log(john.getGradeBook()); // GradeBook { grades: { Math: [ 90 ] } }
+console.log(sarah.getGradeBook()); // GradeBook { grades: { English: [ 86 ] } }
