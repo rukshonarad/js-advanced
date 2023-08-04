@@ -124,7 +124,7 @@ function inPigLatin(sentence) {
             if (firstVowelIndex >= 0) {
                 let firstPart = word.slice(0, firstVowelIndex);
                 let leftPart = word.slice(firstVowelIndex);
-                newWord.push(firstPart + leftPart + "ay");
+                newWord.push(leftPart + firstPart + "ay");
             } else {
                 newWord.push(word + "ay");
             }
