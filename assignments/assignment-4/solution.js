@@ -32,6 +32,11 @@ class GradeBook {
     }
 
     getGrades(subject) {
+        if (this.grades[subject]) {
+            this.grades[subject];
+        } else {
+            return [];
+        }
         return this.grades[subject] || [];
     }
 
