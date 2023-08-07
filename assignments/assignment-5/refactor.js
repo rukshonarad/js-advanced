@@ -1,23 +1,19 @@
 function calculate(num1, num2, cb) {
-    cb(num1, num2);
+    return cb(num1, num2);
 }
 function add(num1, num2) {
-    let result = num1 + num2;
-    console.log(result);
+    return num1 + num2;
 }
 function subtract(num1, num2) {
-    let result = num1 - num2;
-    console.log(result);
+    return num1 - num2;
 }
 function multiply(num1, num2) {
-    let result = num1 * num2;
-    console.log(result);
+    return num1 * num2;
 }
 function devide(num1, num2) {
-    let result = num1 / num2;
-    console.log(result);
+    return num1 / num2;
 }
-calculate(2, 2, add);
-calculate(4, 2, subtract);
-calculate(3, 3, multiply);
-calculate(10, 2, devide);
+console.log(calculate(2, 2, add));
+console.log(calculate(4, 2, subtract));
+console.log(calculate(3, 3, multiply));
+console.log(calculate(10, 2, devide));
