@@ -29,23 +29,30 @@ function filterPrimeNumbers(nums) {
     const primes = [];
     let i = 0;
     while (i < nums.length) {
-        if (nums[i] <= 1) {
-        } else {
-            for (let j = 2; j <= Math.sqrt(nums); j++) {
-                if (nums % j === 0) {
-                    primes.push(nums);
-                }
-            }
+        if (isPrimeNumber(nums[i])) {
+            primes.push(nums[i]);
         }
         i++;
     }
     return primes;
 }
-
+function isPrimeNumber(num) {
+    if (num <= 1) {
+        return false;
+    }
+    let i = 2;
+    while (i < num) {
+        if (num % i === 0) {
+            return false;
+        }
+        i++;
+    }
+    return true;
+}
 console.log(filterPrimeNumbers([2, 3, 4, 5, 6]));
 
-function isPerfectSquare(number) {
-    return Math.sqrt(number) === Math.floor(Math.sqrt(number));
+function isPerfectSquare(num) {
+    return Math.sqrt(num) === Math.floor(Math.sqrt(num));
 }
 
 function filterPerfectSquares(nums) {
@@ -64,6 +71,7 @@ function filterPerfectSquares(nums) {
 }
 
 console.log(filterPerfectSquares([1, 4, 5, 9, 16]));
+
 //  Part 2//
 function isPalindrome(str) {
     const reversedStr = str.split("").reverse().join("");
