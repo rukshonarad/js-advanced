@@ -99,10 +99,23 @@ console.log(johnGreeting.evening());
 
 //Part-8
 
-// function personalLibrary() {
-//     return function (add) {};
-// }
-
+function personalLibrary() {
+    const library = [];
+    return {
+        add: function (book) {
+            library.push(book);
+        },
+        remove: function (book) {
+            library.shift(book);
+        },
+        list: function (book) {
+            return library.slice("");
+        }
+    };
+}
+const myLibrary = personalLibrary();
+console.log(myLibrary.add("The Nation"));
+console.log(myLibrary.list()); // ['The Nation']
 //Part-9
 
 function multiplicationTable(number) {
