@@ -115,7 +115,7 @@ function personalLibrary() {
 }
 const myLibrary = personalLibrary();
 console.log(myLibrary.add("The Nation"));
-console.log(myLibrary.list()); // ['The Nation']
+console.log(myLibrary.list());
 //Part-9
 
 function multiplicationTable(number) {
