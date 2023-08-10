@@ -37,7 +37,6 @@ class GradeBook {
         } else {
             return [];
         }
-        return this.grades[subject] || [];
     }
 
     getAllGrades() {
