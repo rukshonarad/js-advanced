@@ -1,3 +1,4 @@
+//Assignment-5//
 function addTwoNumber(num1, num2) {
     let result = num1 + num2;
     return `The result of adding is ${result}.`;
