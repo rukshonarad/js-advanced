@@ -1,7 +1,7 @@
 // String prototype//
 // //1 reverse(): This method returns a reversed version of the string.
-// Example: "Hello".reverse() should return "olleH".
-// Example: "world".reverse() should return "dlrow".
+// Example: 'Hello'.reverse() should return 'olleH'.
+// Example: 'world'.reverse() should return 'dlrow'.
 
 String.prototype.reverse = function () {
     return this.split("").reverse().join("");
@@ -10,8 +10,8 @@ console.log("hello".reverse());
 console.log("book".reverse());
 console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 // 2 . removeVowels(): This method removes all vowels from the string.
-// Example: "Hello".removeVowels() should return "Hll".
-// Example: "world".removeVowels() should return "wrld".
+// Example: 'Hello'.removeVowels() should return 'Hll'.
+// Example: 'world'.removeVowels() should return 'wrld'.
 String.prototype.removeVowels = function () {
     let vowels = "aeiouAEUIOU";
     let newStr = "";
@@ -27,8 +27,8 @@ console.log("Awesome".removeVowels());
 console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 
 // 3 . countWords(): This method counts the number of words in a string.
-// Example: "Hello World".countWords() should return 2.
-// Example: "One word".countWords() should return 1.
+// Example: 'Hello World'.countWords() should return 2.
+// Example: 'One word'.countWords() should return 1.
 String.prototype.countWords = function () {
     let words = this.split(" ");
 
@@ -39,8 +39,8 @@ console.log("Hello".countWords());
 console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 
 // 4 . wrapInTags(tag): This method wraps the string in the given HTML tag.
-// Example: "Hello".wrapInTags("b") should return "<b>Hello</b>".
-// Example: "world".wrapInTags("i") should return "<i>world</i>".
+// Example: 'Hello'.wrapInTags('b') should return '<b>Hello</b>'.
+// Example: 'world'.wrapInTags('i') should return '<i>world</i>'.
 
 String.prototype.wrapInTags = function (tag) {
     return `<${tag}>${this}</${tag}>`;
@@ -50,8 +50,8 @@ console.log("world".wrapInTags("i"));
 console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 
 // 5 . isPalindrome(): This method checks if the string is a palindrome (same forwards as backwards, ignoring case).
-// // Example: "racecar".isPalindrome() should return true.
-// Example: "Hello".isPalindrome() should return false.
+// // Example: 'racecar'.isPalindrome() should return true.
+// Example: 'Hello'.isPalindrome() should return false.
 String.prototype.isPalindrome = function () {
     let lowerCase = this.toLowerCase();
     let newStr = lowerCase.split("").reverse().join("");
@@ -184,7 +184,7 @@ console.log([5, 10, 15, 20].average());
 console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 // 4.  removeDuplicates(): This method returns a new array with duplicates removed.
 // Example: [1, 2, 2, 3].removeDuplicates() should return [1, 2, 3].
-// Example: ["a", "b", "b", "c"].removeDuplicates() should return ["a", "b", "c"].
+// Example: ['a', 'b', 'b', 'c'].removeDuplicates() should return ['a', 'b', 'c'].
 Array.prototype.removeDublicate = function () {
     let newArr = [];
     for (let i = 0; i < this.length; i++) {
@@ -199,7 +199,7 @@ console.log("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-");
 
 // shuffle(): This method returns a new array with the order of the elements randomized.
 // Example: [1, 2, 3].shuffle() could return [3, 1, 2].
-// Example: ["a", "b", "c"].shuffle() could return ["c", "a", "b"].
+// Example: ['a', 'b', 'c'].shuffle() could return ['c', 'a', 'b'].
 Array.prototype.shuffle = function () {
     let newArr = [];
     for (let i = 0; i < this.length; i++) {

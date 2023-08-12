@@ -12,9 +12,9 @@ function magicCipher(sentence, cipher) {
     return letters;
 }
 
-console.log(magicCipher("add me on facebook", { a: "c", d: "q" })); // Output: "cqq me on fccebook"
-console.log(magicCipher("where are you?", { v: "l", "?": "!" })); // Output: "where are you!"
-console.log(magicCipher("twmce", { m: "n", t: "d", w: "a" })); // Output: "dance"
+console.log(magicCipher("add me on facebook", { a: "c", d: "q" })); // Output: 'cqq me on fccebook'
+console.log(magicCipher("where are you?", { v: "l", "?": "!" })); // Output: 'where are you!'
+console.log(magicCipher("twmce", { m: "n", t: "d", w: "a" })); // Output: 'dance'
 console.log("_________________________");
 // // // 2 Write a function hipsterfy(sentence) that takes a string containing several words as input. Remove the last vowel from each word. 'y' is not a vowel.
 function removeLastVowel(word) {
@@ -63,7 +63,7 @@ console.log("_________________________");
 // // // 4 Write a function longestLetterStreak(str, searchLetters) that takes in two arguments:
 
 // // // str: A string of uppercase characters.
-// // // searchLetters: An array of uppercase single-character strings (e.g., ["A", "F", "K"])
+// // // searchLetters: An array of uppercase single-character strings (e.g., ['A', 'F', 'K'])
 // // // The function should return the length of the longest streak of letters (consecutive letters) in the str that are in the searchLetters.
 function longestLetterStreak(str, searchLetters) {
     let longestWord = 0;
@@ -90,14 +90,14 @@ console.log(longestLetterStreak("YYYYY", ["Z", "K", "Y"])); //
 console.log("_________________________");
 // 5 Write a function inPigLatin(sentence) that translates a sentence into its pig Latin equivalent. The rules for the translation are as follows:
 
-// For words that begin with consonants, all letters before the initial vowel are placed at the end of the word sequence. Then, "ay" is added to the end.
-// "pig" → "igpay"
-// "banana" → "ananabay"
-// "trash" → "ashtray
-// For words that begin with vowels, just add "yay" to the end.
-//  "eat" → "eatyay"
-//  "omelet" → "omeletyay"
-//  "are" → "areyay"
+// For words that begin with consonants, all letters before the initial vowel are placed at the end of the word sequence. Then, 'ay' is added to the end.
+// 'pig' → 'igpay'
+// 'banana' → 'ananabay'
+// 'trash' → 'ashtray
+// For words that begin with vowels, just add 'yay' to the end.
+//  'eat' → 'eatyay'
+//  'omelet' → 'omeletyay'
+//  'are' → 'areyay'
 // Words that were originally caplitalized must remained caplitalized
 // Assume no punctuation
 // 'y' is not a vowel
