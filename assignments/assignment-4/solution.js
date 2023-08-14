@@ -184,8 +184,8 @@ englishTeacher.introduceYourself(); // Hello, my name is Mrs. Colin and I teach 
 
 mathTeacher.teach(john, 90);
 englishTeacher.teach(sarah, 86);
-console.log(mathTeacher.getSubject()); // "Math"
-console.log(englishTeacher.getSubject()); // "English"
+console.log(mathTeacher.getSubject()); // 'Math'
+console.log(englishTeacher.getSubject()); // 'English'
 console.log(mathTeacher.getStudentGrade(john)); // [90]
 console.log(englishTeacher.getStudentGrade(sarah)); // [86]
 

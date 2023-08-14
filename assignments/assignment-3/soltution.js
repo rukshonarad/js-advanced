@@ -61,9 +61,9 @@ console.log(pikachu.revive()); // { name: 'PIKACHU', type: 'Electric', level: 10
 
 console.log(pikachu.levelUp()); // { name: 'PIKACHU', type: 'Electric', level: 11, hp: 24 }
 
-console.log(pikachu.call()); // "PIKA-PIKA"
-console.log(bulbasaur.call()); // "BULBA-BULBA"
-console.log(onyx.call()); // "ONYX-ONYX"
+console.log(pikachu.call()); // 'PIKA-PIKA'
+console.log(bulbasaur.call()); // 'BULBA-BULBA'
+console.log(onyx.call()); // 'ONYX-ONYX'
 
 let electricTypeMoves = [
     { name: "Tackle", damage: 3 },
