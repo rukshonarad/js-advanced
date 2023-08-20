@@ -79,4 +79,17 @@ console.log(filterWords([{ word: "cat" }, { word: "dog" }], "c"));
 // Input: [{ date: '2023-01-01' }, { date: '2023-01-02' }], date = '2023-01-02'
 
 // Output: [{ date: '2023-01-01' }]
-function filterDate ()
+function filterDate(dates, specificDate) {
+    return dates.filter((obj) => obj.date < specificDate);
+}
+
+console.log(
+    filterDate(
+        [
+            { date: "2023-01-01" },
+            { date: "2023-01-02" },
+            { date: "2023-01-03" }
+        ],
+        "2023-01-02"
+    )
+);
