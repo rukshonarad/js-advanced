@@ -1,46 +1,46 @@
-// function transformBooks(library) {
-//     const summaries = [];
-//     library.forEach((genreBooks) => {
-//         const genre = genreBooks[0].genre;
-//         summaries.push(genre);
-//         const avarage =
-//             genreBooks.map((book) => book.rating)(books.rating + books.rating) /
-//             genreBooks.length;
-//         return summaries.push(avarage);
-//         // const averageRating =
-//         //     genreBooks.map((book) => book.rating)(
-//         //         (sum, rating) => sum + rating
-//         //     ) / genreBooks.length;
-//         // summaries.push(averageRating);
-//     });
+function transformBooks(library) {
+    const summaries = [];
+    library.forEach((genreBooks) => {
+        const genre = genreBooks[0].genre;
+        summaries.push(genre);
+        const avarage =
+            genreBooks.map((book) => book.rating)(book.rating + book.rating) /
+            library.rating.length;
+        return summaries.push(avarage);
+        // const averageRating =
+        //     genreBooks.map((book) => book.rating)(
+        //         (sum, rating) => sum + rating
+        //     ) / genreBooks.length;
+        // summaries.push(averageRating);
+    });
 
-//     return summaries;
-// }
+    return summaries;
+}
 
-// const library = [
-//     [
-//         { title: "Book 1", author: "Author A", genre: "Fantasy", rating: 4.5 },
-//         { title: "Book 2", author: "Author B", genre: "Fantasy", rating: 4.8 },
-//         { title: "Book 3", author: "Author C", genre: "Fantasy", rating: 4.2 }
-//     ],
-//     [
-//         {
-//             title: "Book 4",
-//             author: "Author D",
-//             genre: "Science Fiction",
-//             rating: 3.9
-//         },
-//         {
-//             title: "Book 5",
-//             author: "Author E",
-//             genre: "Science Fiction",
-//             rating: 4.1
-//         }
-//     ]
-// ];
+const library = [
+    [
+        { title: "Book 1", author: "Author A", genre: "Fantasy", rating: 4.5 },
+        { title: "Book 2", author: "Author B", genre: "Fantasy", rating: 4.8 },
+        { title: "Book 3", author: "Author C", genre: "Fantasy", rating: 4.2 }
+    ],
+    [
+        {
+            title: "Book 4",
+            author: "Author D",
+            genre: "Science Fiction",
+            rating: 3.9
+        },
+        {
+            title: "Book 5",
+            author: "Author E",
+            genre: "Science Fiction",
+            rating: 4.1
+        }
+    ]
+];
 
-// const summaries = transformBooks(library);
-// console.log(summaries);
+const summaries = transformBooks(library);
+console.log(summaries);
 
 // function filterBooks(books, genreFilter, ratingThreshold, yearRange) {
 //     return books
@@ -184,31 +184,38 @@
 
 // const board4x4 = ["X", "O", "X", "X", "X", "X", "O", "", "O", "X", "O", "X", "X", "O", "O", "X"];
 // const winner4x4 = checkWinner(board4x4, 4); // Returns: "X"
-function checkWinner(board) {
-    for (let i = 0; i < 3; i++) {
-        if (
-            board[i] === board[i + 3] &&
-            board[i] === board[i + 6] &&
-            board[i] !== ""
-        ) {
-            return board[i];
-        }
-    }
+// function checkWinner(board) {
+//     for (let i = 0; i < 3; i++) {
+//         if (
+//             board[i] === board[i + 3] &&
+//             board[i] === board[i + 6] &&
+//             board[i] !== ""
+//         ) {
+//             return board[i];
+//         }
+//     }
 
-    for (let i = 0; i < 3; i++) {
-        if (
-            board[i * 3] === board[i * 3 + 1] &&
-            board[i * 3] === board[i * 3 + 2] &&
-            board[i * 3] !== ""
-        ) {
-            return board[i * 3];
-        }
-    }
-}
+//     for (let i = 0; i < 3; i++) {
+//         if (
+//             board[i * 3] === board[i * 3 + 1] &&
+//             board[i * 3] === board[i * 3 + 2] &&
+//             board[i * 3] !== ""
+//         ) {
+//             return board[i * 3];
+//         }
+//     }
 
-const board = ["X", "O", "X", "X", "X", "O", "", "O", "X"];
-const winner = checkWinner(board);
-console.log(winner);
+//     if (
+//         (board[0] === board[4] && board[0] === board[8] && board[0] !== "") ||
+//         (board[2] === board[4] && board[2] === board[6] && board[2] !== "")
+//     ) {
+//         return board[4];
+//     }
+// }
+
+// const board = ["X", "O", "X", "X", "X", "O", "", "O", "X"];
+// const winner = checkWinner(board);
+// console.log(winner);
 
 // Bonus
 // Task: Write a function named checkWinner that determines if there's a winner in a given Tic-Tac-Toe game board of arbitrary size.
@@ -226,8 +233,3 @@ console.log(winner);
 // const winner4x4 = checkWinner(board4x4, 4); // Returns: "X"
 // const board4x4 = ["X", "O", "X", "X", "X", "X", "O", "", "O", "X", "O", "X", "X", "O", "O", "X"];
 // const winner4x4 = checkWinner(board4x4, 4); // Returns: "X"
-function checkWinner(board, size) {
-    for (let i = 0; i < size; i++) {
-        let start;
-    }
-}
