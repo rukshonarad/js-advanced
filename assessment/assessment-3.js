@@ -1,96 +1,137 @@
 function transformBooks(library) {
-    const summaries = [];
-    library.forEach((genreBooks) => {
-        const genre = genreBooks[0].genre;
-        summaries.push(genre);
-        const avarage =
-            genreBooks.map((book) => book.rating)(book.rating + book.rating) /
-            library.rating.length;
-        return summaries.push(avarage);
-        // const averageRating =
-        //     genreBooks.map((book) => book.rating)(
-        //         (sum, rating) => sum + rating
-        //     ) / genreBooks.length;
-        // summaries.push(averageRating);
+    const summary = library.map((books) => {
+        let totalRatings = 0;
+        let topRating = 0;
+        let topBookTitle = "";
+
+        books.forEach((book) => {
+            totalRatings += book.rating;
+
+            if (book.rating > topRating) {
+                topRating = book.rating;
+                topBookTitle = book.title;
+            }
+        });
+
+        const averageRating = totalRatings / books.length;
+        return {
+            genre: books[0].genre,
+            averageRating: averageRating,
+            topBook: topBookTitle
+        };
     });
-
-    return summaries;
+    return summary;
 }
-
 const library = [
     [
-        { title: "Book 1", author: "Author A", genre: "Fantasy", rating: 4.5 },
-        { title: "Book 2", author: "Author B", genre: "Fantasy", rating: 4.8 },
-        { title: "Book 3", author: "Author C", genre: "Fantasy", rating: 4.2 }
+        {
+            title: "Harry Potter",
+            author: "J.K. Rowling",
+            genre: "Fantasy",
+            rating: 4.5
+        },
+        {
+            title: "The Hobbit",
+            author: "J.R.R. Tolkien",
+            genre: "Fantasy",
+            rating: 4.2
+        },
+        {
+            title: "The Lord of the Rings",
+            author: "J.R.R. Tolkien",
+            genre: "Fantasy",
+            rating: 4.3
+        }
     ],
     [
         {
-            title: "Book 4",
-            author: "Author D",
-            genre: "Science Fiction",
-            rating: 3.9
+            title: "To Kill a Mockingbird",
+            author: "Harper Lee",
+            genre: "Fiction",
+            rating: 4.8
         },
         {
-            title: "Book 5",
-            author: "Author E",
-            genre: "Science Fiction",
+            title: "1984",
+            author: "George Orwell",
+            genre: "Fiction",
+            rating: 4.0
+        },
+        {
+            title: "Brave New World",
+            author: "Aldous Huxley",
+            genre: "Fiction",
             rating: 4.1
+        }
+    ],
+    [
+        {
+            title: "A Brief History of Time",
+            author: "Stephen Hawking",
+            genre: "Science",
+            rating: 4.7
+        },
+        {
+            title: "The Selfish Gene",
+            author: "Richard Dawkins",
+            genre: "Science",
+            rating: 4.4
         }
     ]
 ];
 
-const summaries = transformBooks(library);
-console.log(summaries);
+const transformedLibrary = transformBooks(library);
+console.log(transformedLibrary);
 
-// function filterBooks(books, genreFilter, ratingThreshold, yearRange) {
-//     return books
-//         .filter(
-//             (book) =>
-//                 book.genre === genreFilter &&
-//                 book.rating >= ratingThreshold &&
-//                 book.publishedYear >= yearRange[0]
-//         )
-//         .map((book) => ({ title: book.title, author: book.author }));
-// }
-// const books = [
-//     {
-//         title: "Harry Potter",
-//         author: "J.K. Rowling",
-//         genre: "Fantasy",
-//         rating: 4.5,
-//         publishedYear: 1997
-//     },
-//     {
-//         title: "A Brief History of Time",
-//         author: "Stephen Hawking",
-//         genre: "Science",
-//         rating: 4.7,
-//         publishedYear: 1988
-//     },
-//     {
-//         title: "The Catcher in the Rye",
-//         author: "J.D. Salinger",
-//         genre: "Fiction",
-//         rating: 3.8,
-//         publishedYear: 1951
-//     },
-//     {
-//         title: "Brave New World",
-//         author: "Aldous Huxley",
-//         genre: "Fiction",
-//         rating: 4.1,
-//         publishedYear: 1932
-//     },
-//     {
-//         title: "Pride and Prejudice",
-//         author: "Jane Austen",
-//         genre: "Classics",
-//         rating: 4.5,
-//         publishedYear: 1813
-//     }
-// ];
-// const filteredBooks = filterBooks(books, "Fiction", 4.0, [1900, 2000]);
-// console.log(filteredBooks);
+function filterBooks(books, genreFilter, ratingThreshold, yearRange) {
+    return books
+        .filter(
+            (book) =>
+                book.genre === genreFilter &&
+                book.rating >= ratingThreshold &&
+                book.publishedYear >= yearRange[0] &&
+                book.publishedYear <= yearRange[1]
+        )
+        .map((book) => ({ title: book.title, author: book.author }));
+}
+const books = [
+    {
+        title: "Harry Potter",
+        author: "J.K. Rowling",
+        genre: "Fantasy",
+        rating: 4.5,
+        publishedYear: 1997
+    },
+    {
+        title: "A Brief History of Time",
+        author: "Stephen Hawking",
+        genre: "Science",
+        rating: 4.7,
+        publishedYear: 1988
+    },
+    {
+        title: "The Catcher in the Rye",
+        author: "J.D. Salinger",
+        genre: "Fiction",
+        rating: 3.8,
+        publishedYear: 1951
+    },
+    {
+        title: "Brave New World",
+        author: "Aldous Huxley",
+        genre: "Fiction",
+        rating: 4.1,
+        publishedYear: 1932
+    },
+    {
+        title: "Pride and Prejudice",
+        author: "Jane Austen",
+        genre: "Classics",
+        rating: 4.5,
+        publishedYear: 1813
+    }
+];
+const filteredBooks = filterBooks(books, "Fiction", 4.0, [1900, 2000]);
+console.log(filteredBooks);
 // Problem 3
 // Create a function named createInventorySystem that encapsulates a private collection of items and provides public methods to manage this collection.
 // Private Data: In the outer function, define a private array to hold the items. Each item is a string representing an individual product.
@@ -116,36 +157,36 @@ console.log(summaries);
 
 // inventorySystem.removeItem("Apple");
 // const updatedItems = inventorySystem.getItems(); // Returns: ["Banana"]
-// function createInventorySystem() {
-//     const items = [];
-//     const addItem = function (item) {
-//         items.push(item);
-//     };
-//     const removeItem = function (item) {
-//         const idx = items.indexOf(item);
-//         if (idx !== -1) {
-//             items.splice(idx, 1);
-//         }
-//     };
-//     const getItems = function () {
-//         return items;
-//     };
+function createInventorySystem() {
+    const items = [];
+    const addItem = function (item) {
+        items.push(item);
+    };
+    const removeItem = function (item) {
+        const idx = items.indexOf(item);
+        if (idx !== -1) {
+            items.splice(idx, 1);
+        }
+    };
+    const getItems = function () {
+        return items;
+    };
 
-//     return {
-//         addItem: addItem,
-//         removeItem: removeItem,
-//         getItems: getItems
-//     };
-// }
+    return {
+        addItem: addItem,
+        removeItem: removeItem,
+        getItems: getItems
+    };
+}
 
-// const system = createInventorySystem();
+const system = createInventorySystem();
 
-// system.addItem("Apple");
-// system.addItem("Banana");
-// system.addItem("Orange");
-// system.addItem("Mango");
-// const items = system.getItems();
-// console.log(items);
+system.addItem("Apple");
+system.addItem("Banana");
+system.addItem("Orange");
+system.addItem("Mango");
+const items = system.getItems();
+console.log(items);
 
 // system.removeItem("Apple");
 // system.removeItem("Orange");
@@ -184,38 +225,38 @@ console.log(summaries);
 
 // const board4x4 = ["X", "O", "X", "X", "X", "X", "O", "", "O", "X", "O", "X", "X", "O", "O", "X"];
 // const winner4x4 = checkWinner(board4x4, 4); // Returns: "X"
-// function checkWinner(board) {
-//     for (let i = 0; i < 3; i++) {
-//         if (
-//             board[i] === board[i + 3] &&
-//             board[i] === board[i + 6] &&
-//             board[i] !== ""
-//         ) {
-//             return board[i];
-//         }
-//     }
+function checkWinner(board) {
+    for (let i = 0; i < 3; i++) {
+        if (
+            board[i] === board[i + 3] &&
+            board[i] === board[i + 6] &&
+            board[i] !== ""
+        ) {
+            return board[i];
+        }
+    }
 
-//     for (let i = 0; i < 3; i++) {
-//         if (
-//             board[i * 3] === board[i * 3 + 1] &&
-//             board[i * 3] === board[i * 3 + 2] &&
-//             board[i * 3] !== ""
-//         ) {
-//             return board[i * 3];
-//         }
-//     }
+    for (let i = 0; i < 3; i++) {
+        if (
+            board[i * 3] === board[i * 3 + 1] &&
+            board[i * 3] === board[i * 3 + 2] &&
+            board[i * 3] !== ""
+        ) {
+            return board[i * 3];
+        }
+    }
 
-//     if (
-//         (board[0] === board[4] && board[0] === board[8] && board[0] !== "") ||
-//         (board[2] === board[4] && board[2] === board[6] && board[2] !== "")
-//     ) {
-//         return board[4];
-//     }
-// }
+    if (
+        (board[0] === board[4] && board[0] === board[8] && board[0] !== "") ||
+        (board[2] === board[4] && board[2] === board[6] && board[2] !== "")
+    ) {
+        return board[4];
+    }
+}
 
-// const board = ["X", "O", "X", "X", "X", "O", "", "O", "X"];
-// const winner = checkWinner(board);
-// console.log(winner);
+const board = ["X", "O", "X", "X", "X", "O", "", "O", "X"];
+const winner = checkWinner(board);
+console.log(winner);
 
 // Bonus
 // Task: Write a function named checkWinner that determines if there's a winner in a given Tic-Tac-Toe game board of arbitrary size.
