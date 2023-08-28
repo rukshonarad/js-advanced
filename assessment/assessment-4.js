@@ -6,8 +6,26 @@
   isPalindromePossible("abcabc"); // true, as characters can be arranged to form "abccba", or "baccab"
   isPalindromePossible("abcba"); // true, as characters can be arranged to form "abcba", or "bacab"
 */
+
 function isPalindromePossible(str) {
-    return str.split(" ").reverse().join("");
+    const charCount = charFrequency(str);
+
+    if (str.length % 2 === 0) {
+        for (const char in charCount) {
+            if (charCount[char] % 2 !== 0) {
+                return false;
+            }
+        }
+    } else {
+        let oddCount = 0;
+        for (const char in charCount) {
+            if (charCount[char] % 2 !== 0) {
+                oddCount++;
+            }
+        }
+        return oddCount === 1;
+    }
+    return true;
 }
 // console.log(isPalindromePossible("racecar"));
 // Problem-2: Add value to the beginning of array
@@ -117,8 +135,8 @@ function generatePrimes(n) {
     return primes;
 }
 
-console.log(generatePrimes(3)); // Output: [2, 3, 5]
-console.log(generatePrimes(5)); // Output: [2, 3, 5, 7, 11]
+console.log(generatePrimes(3));
+console.log(generatePrimes(5));
 
 // Problem-7: Create a Function to Determine if a Target String Can Be Formed
 // /*
@@ -128,3 +146,35 @@ console.log(generatePrimes(5)); // Output: [2, 3, 5, 7, 11]
 //   canFormTarget("cat", "dog", "actdog"); // true
 //   canFormTarget("a", "b", "aa"); // false
 //  canFormTarget("a", "b", "abx"); // false
+
+function charFrequency(str) {
+    const characters = str.split("");
+
+    return (charCount = characters.reduce((acc, char) => {
+        if (acc[char]) {
+            acc[char]++;
+        } else {
+            acc[char] = 1;
+        }
+        return acc;
+    }, {}));
+}
+
+// console.log(charFrequency("cat"));
+
+function canFormTarget(str1, str2, target) {
+    if (str1.length + str2.length !== target.length) {
+        return false;
+    }
+
+    const concatStrs = str1 + str2;
+
+    const strsCharCount = charFrequency(concatStrs);
+    const targetCharCount = charFrequency(target);
+    for (const char in targetCharCount) {
+        if (targetCharCount[char] !== strsCharCount[char]) {
+            return false;
+        }
+    }
+    return true;
+}
