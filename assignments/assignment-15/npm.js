@@ -1,17 +1,6 @@
 // Tasks
 const fs = require("fs");
-const { connect } = require("http2");
 const { v4: uuid } = require("uuid");
-// class Person {
-//     constructor(id, firstName, lastName, lastDigitOfSSN, expenses, incomes) {
-//         this.id = id;
-//         this.firstName = firstName;
-//         this.lastName = lastName;
-//         this.lastDigitOfSSN = lastDigitOfSSN;
-//         this.expenses = expenses;
-//         this.incomes = incomes;
-//     }
-// }
 class DataAnalyzer {
     read() {
         const content = fs.readFileSync("data.json", "utf-8");
